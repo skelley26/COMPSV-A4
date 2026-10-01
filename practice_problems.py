@@ -13,8 +13,16 @@ Output: False
 """
 
 def has_duplicates(product_ids):
-    # Your implementation here
-    pass
+    product_set = set()
+    product_ids.add([10, 20, 30, 20, 40])
+    for product_id in product_ids:
+        if product_id in product_set:
+            return True
+        product_set.add(product_id)
+        return False
+    
+
+has_duplicates()
 
 
 """
