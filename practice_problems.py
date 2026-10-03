@@ -14,15 +14,16 @@ Output: False
 
 def has_duplicates(product_ids):
     product_set = set()
-    product_ids.add([10, 20, 30, 20, 40])
     for product_id in product_ids:
         if product_id in product_set:
+            print(f"Duplicate found: {product_id}")
             return True
         product_set.add(product_id)
+    else:
+        print("No duplicates found.")
         return False
-    
 
-has_duplicates()
+# has_duplicates([1, 2, 3, 4, 5])  # Output: True
 
 
 """
@@ -39,15 +40,52 @@ task_queue.remove_oldest_task() → "Email follow-up"
 """
 
 class TaskQueue:
-    def __init__(self):
-        # Your initialization here
-        pass
+    def __init__(self, value):
+        self.front = None
+        self.rear = None
+        self.value = value
+        self.next = None
+
 
     def add_task(self, task):
-        pass
+        new_task = self.__init__(task)
+        if not self.front:
+            self.front = new_task
+            self.rear = new_task
+        else:
+            self.rear.next = new_task
+            self.rear = new_task
 
     def remove_oldest_task(self):
-        pass
+        if not self.front:
+            return None
+        oldest_task = self.front.value
+        self.front = self.front.next
+        if not self.front:
+            self.rear = None
+        return oldest_task
+
+    def print_tasks(self):
+        current = self.front
+        if not current:
+            print("No tasks in the queue.")
+            return
+        while current:
+            print(f"- {current.value}")
+            current = current.next
+
+while True: 
+    
+    task = input("Enter a task to add ( type 1), see all tasks (type 2), or type exit to stop (type 3): ")
+    task_queue = TaskQueue(task)
+
+    if task.lower() == '3':
+        break
+    elif task.lower() == '2':
+        task_queue.print_tasks()
+    elif task.lower() == '1':
+        task = input("Enter the task to add: ")
+        task_queue.add_task(task)
 
 
 """
@@ -72,3 +110,7 @@ class UniqueTracker:
 
     def get_unique_count(self):
         pass
+
+
+# https://www.w3schools.com/python/python_sets.asp
+# 
