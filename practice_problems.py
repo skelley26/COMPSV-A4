@@ -23,7 +23,7 @@ def has_duplicates(product_ids):
         print("No duplicates found.")
         return False
 
-# has_duplicates([1, 2, 3, 4, 5])  # Output: True
+#has_duplicates([1, 2, 3, 4, 5])  # Output: True
 
 
 """
@@ -40,52 +40,38 @@ task_queue.remove_oldest_task() → "Email follow-up"
 """
 
 class TaskQueue:
-    def __init__(self, value):
-        self.front = None
-        self.rear = None
-        self.value = value
-        self.next = None
-
+    def __init__(self):
+        self.queue = []
+        
 
     def add_task(self, task):
-        new_task = self.__init__(task)
-        if not self.front:
-            self.front = new_task
-            self.rear = new_task
-        else:
-            self.rear.next = new_task
-            self.rear = new_task
+        self.queue.append(task)
+        print(f"Task added: {task}")
 
     def remove_oldest_task(self):
-        if not self.front:
+        if self.queue:
+            oldest_task = self.queue.pop(0)
+            print(f"Removed oldest task: {oldest_task}")
+        else:
+            print("No tasks to remove.")
             return None
-        oldest_task = self.front.value
-        self.front = self.front.next
-        if not self.front:
-            self.rear = None
-        return oldest_task
 
     def print_tasks(self):
-        current = self.front
-        if not current:
+        print("Tasks in the queue:")
+        if not self.queue:
             print("No tasks in the queue.")
-            return
-        while current:
-            print(f"- {current.value}")
-            current = current.next
+        else:
+            for task in self.queue:
+                print(task)
 
-while True: 
-    
-    task = input("Enter a task to add ( type 1), see all tasks (type 2), or type exit to stop (type 3): ")
-    task_queue = TaskQueue(task)
+task_queue = TaskQueue()
+task_queue.add_task("Email follow-up")
+task_queue.add_task("Code review")
+task_queue.remove_oldest_task()
+task_queue.print_tasks()
 
-    if task.lower() == '3':
-        break
-    elif task.lower() == '2':
-        task_queue.print_tasks()
-    elif task.lower() == '1':
-        task = input("Enter the task to add: ")
-        task_queue.add_task(task)
+
+
 
 
 """
@@ -101,16 +87,29 @@ tracker.add(10)
 tracker.get_unique_count() → 2
 """
 
+
 class UniqueTracker:
     def __init__(self):
-        pass
+        self.unique_values = set()
 
     def add(self, value):
-        pass
+        self.unique_values.add(value)
+        #holy crow I overthought this one
 
     def get_unique_count(self):
-        pass
+        self.unique_count = len(self.unique_values)
+        print(f"Values: {self.unique_values}")
+        print(f"Unique count: {self.unique_count}")
+
+#call the class function
+
+Tracker = UniqueTracker()
+Tracker.add(10)
+Tracker.add(20)
+Tracker.add(10)
+Tracker.get_unique_count()
 
 
 # https://www.w3schools.com/python/python_sets.asp
-# 
+# https://www.w3schools.com/python/trypython.asp?filename=demo_dsa_queues_class
+# https://www.w3schools.com/python/python_dsa_queues.asp

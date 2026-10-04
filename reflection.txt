@@ -1,0 +1,5 @@
+I totally overthought the practice problems, but the timed challenge took me 5 minutes to complete.
+1. The challenge I chose was #10 remove by value. I chose this one because I knew that sets would automatically get rid of duplicates so I figured it would be simple.
+2. Given the time limit, I think that this was the right choice. The code does what it shoulc, but there is definitely room for more. For example, adding, deleting and printing values with user input.
+3. The time limit actually helped me not overthink it and end up adding too much. Although I feel unfulfilled by the output being organized because the prompt was to delete the first occurance. 
+    I think that, had I had enough time, I would have added the few things I mentioned above. 
